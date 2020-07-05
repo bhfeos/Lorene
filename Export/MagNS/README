@@ -1,0 +1,60 @@
+
+1/ Description of the various codes
+   ================================
+
+read_mag_ns: code for reading a binary file containing data from a spectral computation
+             of a rotating magnetized neutron stars with Lorene and exporting
+             all the fields on a Cartesian grid.
+
+2/ Documentation
+   =============
+
+   No documentation for the moment... sorry!
+
+3/ Compilation
+   ===========
+
+Typing
+
+	gmake
+
+will produce the executable read_mag_ns in a non-optimized version for
+debugging purposes. To get an optimized version for production purposes
+type instead
+
+	gmake -f Makefile_O2
+
+You can clear everything by
+
+	gmake uninstall
+
+
+4/ Input parameters
+   ================
+
+The code read_mag_ns needs one input file:
+
+read_mag_ns.par :  parameters of the Cartesian grid and name of the spectral data file
+
+The spectral data files resulting from Lorene computations can be obtained by
+running the code magstar in Lorene/Codes/Magstar
+After running magstar, copy the file resu.d to this directory and specify its
+name in read_mag_ns.par (test_data.d by default).
+
+5/ Running
+   =======
+
+Simply type
+
+	read_mag_ns
+
+The output files are:
+
+        inib.d : data on the Cartesian grid in a binary format; can be used as input in
+                 the constructor Mag_NS::Mag_NS(FILE* ) for further processing
+
+        inif.d : data on the Cartesian grid in a formatted format; can be used as input in
+                 the constructor Mag_NS::Mag_NS(ifstream& ) for further processing
+
+
+

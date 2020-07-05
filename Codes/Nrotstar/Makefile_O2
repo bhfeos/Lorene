@@ -1,0 +1,32 @@
+SHELL=/bin/sh
+
+include $(HOME_LORENE)/local_settings		  # defines which compiler,...
+
+LIB = -L$(HOME_LORENE)/Lib -llorene -llorenef77 
+LIBLOR = $(HOME_LORENE)/Lib/liblorene.a $(HOME_LORENE)/Lib/liblorenef77.a 
+
+.SUFFIXES : .o .C
+
+SRC1 = nrotstar.C
+OBJ1 = $(SRC1:.C=.o)
+EXE1 = $(SRC1:.C=)
+
+SRC2 = nrotseq.C
+OBJ2 = $(SRC2:.C=.o)
+EXE2 = $(SRC2:.C=)
+
+$(EXE1): $(OBJ1) $(LIBLOR)
+	$(CXX) -o $@ $(CXXFLAGS) $(OBJ1) $(LIB) $(LIB_LAPACK) \
+					$(LIB_GSL) $(LIB_PGPLOT) $(LIB_CXX)
+
+$(EXE2): $(OBJ2) $(LIBLOR)
+	$(CXX) -o $@ $(CXXFLAGS) $(OBJ2) $(LIB) $(LIB_LAPACK) \
+					$(LIB_GSL) $(LIB_PGPLOT) $(LIB_CXX)
+.C.o:
+	$(CXX)  -c $(CXXFLAGS) $(INC) $<
+
+all: $(EXE1) $(EXE2) 
+
+uninstall clean:
+	rm -f $(OBJ1) $(OBJ2)
+	rm -f $(EXE1) $(EXE2)

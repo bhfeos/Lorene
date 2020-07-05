@@ -1,0 +1,32 @@
+
+ -- Scalar::set_dzpuis(int ) : ajouter un appel a del_deriv() ?
+ 
+ -- Map_af::dsdr(const Scalar&, Scalar& ) : le traitement du cas
+    dzpuis != 0 n'est pas optimal: la ligne
+          tmp_ced.set(nzm1) -= dzp * uuva(nzm1) ; 
+    fait passer par des coef_i() inutiles. Il vaudrait mieux ne pas
+    utiliser Valeur::operator(), mais des Valeurs nulles sauf dans
+    le CED.  
+    
+ -- interface Coord arithmetique = Scalar et non plus Mtbl 
+
+ -- Classe Valeur: rendre prive tous les champs (surtout base).
+ 
+ -- Mettre donne_lm, etc... comme methodes de Mg3d
+
+ -- reflechir sur les fonctions a mettre inline (et comment ca marche!)
+
+ -- supprimer l'aspect virtuel des fonctions appeles dans les destructeurs
+    (genre del_deriv() dans Etoile et Metrique...).
+   
+ -- creer un espace de noms pour remplacer type_parite.h?
+
+ -- transformer le statut des representations alternatives de Sym_tensor,
+    Sym_tensor_trans et Sym_tensor_tt (p_transverse, etc...): ces pointeurs
+    ne soient plus mutables, mais sur le meme pied que les composants. Les
+    fonctions d'acces et de calcul seraient distinctes ( e.g. mu() ferait un
+    'abort() si p_mu = 0x0 ).
+
+ -- classe Valeur: fonction coef() retourne const Mtbl_cf& (et non plus void)
+                   fonction coef_i() retourne const Mtbl& 
+                   et rendre c et c_cf prives. 

@@ -1,0 +1,91 @@
+
+        //----------------------------------------------//
+        //  Langage Objet pour la RElativite NumeriquE  //
+        //                  (LORENE)                    //
+        //----------------------------------------------//
+
+	 $Id: README,v 1.9 2006/09/11 11:28:11 j_novak Exp $
+
+LORENE is a free software under the GNU General Public License (see the
+file COPYING in this directory).
+
+LORENE is developed by different persons (see the file AUTHORS in this
+directory). 
+
+Comments or questions should be addressed to 
+eric.gourgoulhon@obspm.fr, philippe.grandclement@obspm.fr, jerome.novak@obspm.fr.
+
+The LORENE Web page is
+
+        http://www.lorene.obspm.fr/
+
+
+Installing Lorene on your computer
+----------------------------------
+
+See the file INSTALL in this directory.
+
+
+Documentation
+-------------
+
+Documentations about various aspects of LORENE, as well as CVS usage,
+are in the directory Lorene/Doc.
+In particular the HTML reference manual of LORENE can be read 
+by browsing $HOME_LORENE/Doc/refguide/index.html 
+
+where $HOME_LORENE stands for the path of directory Lorene (see file INSTALL). 
+The LaTeX version of this manual can be produced as follows:
+	
+	cd $HOME_LORENE/Doc
+	gmake refguide.dvi
+
+
+Using LORENE
+------------		
+
+LORENE is compiled twice to provide two libraries:
+
+  1/ Lorene/Lib/liblorene_g.a : non-optimized version of LORENE, with
+	   extra checks (assert instructions) and debugging information 
+	   (-g option) to allow for using a debugger
+
+  2/ Lorene/Lib/liblorene.a : optimized version of LORENE for production runs,
+	   with the assert instructions skipped out
+
+Template Makefiles to employ LORENE are in the directory Lorene/Devel:
+
+Makefile : link with the non-optimized version of LORENE
+
+Makefile_O2: link with the optimized version of LORENE for production runs
+	
+Some main codes are in the directory Lorene/Codes. See the corresponding
+README files. 
+
+
+Contributing to LORENE
+----------------------
+
+Template files for creating C++ source (template.C) and headers (template.h)
+from scratch are provided in the directory Lorene/Devel. 
+
+Instructions for the usage of CVS, in order to commit your changes to 
+the LORENE repository in Meudon, are in the file Lorene/Doc/cvs_basics.txt. 
+
+
+Upgrading your installation
+---------------------------
+
+As a research software, LORENE is in perpetual development.
+You should therefore run from time to time the commands
+
+	cd $HOME_LORENE
+	cvs update -d
+	gmake
+
+to get the latest version of LORENE.
+The script $HOME_LORENE/lorene_up contains the above commands, so
+that it is equivalent to type
+
+	$HOME_LORENE/lorene_up
+

@@ -1,0 +1,102 @@
+
+This file covers only features specific to some Linux distributions.
+See the file INSTALL for the main installation instructions.
+
+MANDRIVA 2006	
+=============
+
+You must have the following packages installed on your system:
+
+gcc
+gcc-c++
+gcc-gfortran
+libgfortran
+liblapack3
+liblapack3-devel
+libgsl0
+libgsl0-devel
+libxorg-x11-devel (provides makedepend and is required for the X11 output of PGPLOT)
+libpng3-devel (required for the PNG output of PGPLOT)
+libfftw3
+libfftw3-devel
+OpenDX
+doxygen
+
+
+SuSE 9.2
+========
+
+You must have the following packages installed on your system:
+
+gcc
+gcc-c++
+gcc-g77
+lapack
+gsl
+xorg-x11-devel (provides makedepend)
+fftw3
+fftw3-devel
+doxygen
+
+
+DEBIAN 3.1 "Sarge"
+=================
+
+You must have the following packages installed on your system:
+
+blas
+blas-dev
+lapack3
+lapack3-dev
+fftw3
+fftw3-dev
+libgsl0
+libgsl0-dev
+pgplot5
+libx11-dev
+libpng2-dev
+doxygen
+
+
+MANDRAKE 8.0	
+============
+
+You must install the package XFree86-devel-4.0.3-7mdk.i586.rpm from CDROM 1. 
+This packages provides 
+	- makedepend (required for setting the dependencies in Lorene Makefiles)
+	- Xlib.h (required for installing PGPLOT)
+
+The LAPACK library is not part of the Mandrake 8.0 distribution.
+You can download the necessary RPMs from http://www.netlib.org/lapack/
+
+
+REDHAT 7.0
+==========
+
+The version 3.4.3-4 of DOC++ which can be found on the CDROM 
+"Power Tools Application" has many bugs ! It should be upgraded at least to 
+version 3.4.8 (from the DOC++ Web site: http://docpp.sourceforge.net/).
+
+You must install the package XFree86-devel-4.0.1-1.i386.rpm from CDROM.
+This packages provides
+	- makedepend (required for setting the dependencies in Lorene Makefiles)
+	- Xlib.h (required for installing PGPLOT)
+
+REDHAT 7.1
+==========
+                                                                                                                                      
+You must install the package XFree86-devel-4.0.3-5.i386.rpm from CDROM. 
+This packages provides
+	- makedepend (required for setting the dependencies in Lorene Makefiles)
+	- Xlib.h (required for installing PGPLOT)
+
+
+Debian 3.0
+==========
+You need to have at least the following packages installed:
+	- xutils: provides makedepend
+	- xlibs-dev: contains Xlib.h 
+	- doc++ (version in woody: 3.4.9)
+	- pgplot5 (contains libpgplot and libcpgplot)
+	- lapack, lapack-dev  (depends on blas)
+	

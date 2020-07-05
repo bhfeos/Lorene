@@ -1,0 +1,119 @@
+
+	      *************************************************
+ 	      *	Lorene codes for rotating relativistic stars  *
+	      *************************************************
+
+	$Id: README,v 1.7 2010/02/01 17:58:13 e_gourgoulhon Exp $
+
+
+1/ Description of the various codes
+   ================================
+
+rotstar:            Code for rigidly rotating stars in GR 
+                    (quasi-isotropic gauge) 
+		    ** OBSOLETE : use Lorene/Codes/Nrotstar/nrotstar instead **
+
+rotdiff:            Code for differentially rotating stars in GR 
+                    (quasi-isotropic gauge)
+
+rotseq:             Code for computing sequences of either rigidly or 
+                    differentially rotating stars in GR (quasi-isotropic gauge)
+
+rotstar_dirac:      Code for rigidly rotating stars in GR in the Dirac gauge.
+
+rotstar_dirac_diff: Code for differentially rotating stars in GR 
+                    in the Dirac gauge.
+
+2/ Compilation
+   ===========
+
+Typing
+
+	gmake name_of_main_code
+
+where name_of_main_code = rotstar, rotdiff, rotseq or rotstar_dirac, 
+rotstar_dirac_diff will produce the executable in a non-optimized version 
+for debugging purposes.  To get an optimized version for production purposes 
+type instead
+
+	gmake -f Makefile_O2 name_of_main_code
+
+You can clear everything by
+
+	gmake uninstall
+
+
+3/ Input parameters
+   ================
+
+rotstar / rotstar_dirac / rotstar_dirac_diff:
+-----------------------
+
+The code rotstar needs two input files:
+
+parrot.d :  parameters of the computation
+par_eos.d : description of the equation of state
+
+Templates files are provided in the directory Parameters. For instance
+to compute a relativistic polytropic (gamma=2) star rotating at the
+Keplerian limit, do
+
+	cp Parameters/Kepler_GR/parrot.d .
+	cp Parameters/Kepler_GR/par_eos.d .
+
+Sample parameters (parrotdiff.d, par_eos.d) for rotstar_dirac_diff are
+stored under the directory of "Parameters/Rotstar_dirac_diff".  Since 
+rotdiff and rotstar_dirac_diff require the same parameters, the sample 
+parameters are useful to compare the numerical difference between two 
+codes.
+
+Note: rotstar_dirac and rotstar_dirac_diff runs only for relativistic models.
+
+
+
+rotseq:
+------
+The code rotseq needs two input files:
+
+parrotseq.d :  parameters of the computation (includes the definition
+                of the sequence)
+par_eos.d : description of the equation of state
+
+Templates files are provided in the directory Parameters/Rotseq.
+To use them, simply type
+
+	cp Parameters/Rotseq/parrotseq.d .
+	cp Parameters/Rotseq/par_eos.d .
+
+A constant baryon number sequence can be constructed either
+
+(i) either by varying the central enthalpy (parameters
+   [entc_min, entc_max] of the input file parrotseq.d); the code then
+   automatically adjusts the rotation frequency to get a fixed baryon
+   mass
+
+(ii) or by varying the rotation frequency (parameters
+   [freq_min_si,freq_max_si] of the input file parrotseq.d);
+   the code then automatically adjusts the central enthalpy to get
+   a fixed baryon mass
+
+The choice of the type of sequence is performed by setting
+
+-- entc_min != entc_max and freq_min_si  = freq_max_si for
+   a sequence of type (i)
+-- entc_min  = entc_max and freq_min_si != freq_max_si for
+   a sequence of type (ii)
+
+
+
+4/ Running
+   =======
+
+Simply type
+
+	rotstar / rotstar_dirac / rotstar_dirac_diff
+
+or
+        rotseq
+
+The output files like convergence.d can be visualized via xmgrace.
